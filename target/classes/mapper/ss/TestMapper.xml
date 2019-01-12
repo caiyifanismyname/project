@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ss.vv.ss.mapper.ITestMapper">
+	<resultMap id="baseResultMap" type="com.ss.vv.ss.domain.Test">
+		<id column="pig_id" jdbcType="INTEGER" property="pig_id" />
+		<result column="pig_name" jdbcType="VARCHAR" property="pig_name" />
+		<result column="pig_sum" jdbcType="INTEGER" property="pig_sum" />
+		<result column="pig_price" jdbcType="INTEGER" property="pig_price" />
+	</resultMap>
+	<sql id="baseColumnList">
+pig_id,pig_name,pig_sum,pig_price	</sql>
+	<sql id="voColumnList">
+pig_id,pig_name,pig_sum,pig_price	</sql>
+		
+
+		<insert id="insert" useGeneratedKeys="true" keyProperty="entity.pig_id">
+		INSERT INTO ${tableName} (
+		pig_name,pig_sum,pig_price
+		) VALUES (
+		#{entity.pig_name}, #{entity.pig_sum}, #{entity.pig_price}
+		)	</insert>
+
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select
+		count(pig_id)
+		from ${tableName}
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+	</select>
+
+	<!-- 这部分为根据传递参数，自动生成SQL -->
+	<select id="getList" parameterType="java.util.Map" resultMap="baseResultMap">
+		select
+		<if test="field == null">
+			<include refid="voColumnList" />
+		</if>
+		<if test="field != null">
+			${field}
+		</if>
+		from ${tableName}
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+		<if test="order != null">
+			order by ${order}
+		</if>
+		<if test="limit != 0">
+			<if test="offset != 0">
+				limit ${offset}, ${limit}
+			</if>
+			<if test="offset == 0">
+				limit ${limit}
+			</if>
+		</if>
+	</select>
+
+</mapper>

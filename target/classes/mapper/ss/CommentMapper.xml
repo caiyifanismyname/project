@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ss.vv.ss.mapper.ICommentMapper">
+	<resultMap id="baseResultMap" type="com.ss.vv.ss.domain.Comment">
+		<id column="username" jdbcType="VARCHAR" property="userName" />
+		<result column="comment" jdbcType="VARCHAR" property="comment" />
+		<result column="time" jdbcType="TIMESTAMP" property="time" />
+	</resultMap>
+
+	<sql id="baseColumnList">
+		username,comment,time
+	</sql>
+	<sql id="voColumnList">
+		username,comment,time
+	</sql>
+
+	<insert id="insert" keyProperty="String">
+		INSERT INTO comment (
+		username,comment,time
+		) VALUES (
+		#{entity.userName},
+		#{entity.comment},
+		#{entity.time}
+		)
+	</insert>
+	<select id="getCommentList" parameterType="java.util.Map" resultMap="baseResultMap">
+		select * from 
+
+</select>
+	<cache />
+</mapper>

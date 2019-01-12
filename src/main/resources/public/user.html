@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+</head>
+<body>
+	 <form id="user" role="form" action="/user/addOrEditUser" method="post">
+     用户名用户名：
+    <input type="text" id="user_name" name="username" size="30" class="form-control">
+         用户邮箱：
+    <input type="text" id="user_email" name="user_email" size="30" class="form-control">
+         用户电话号码：
+    <input type="text" id="user_phone" name="user_phone" size="30" class="form-control">
+   用户名密码：
+	<input type="password" id="user_pass" name="password" size="30" class="form-control">
+    
+   <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">添加</button>
+ </form>
+
+     <div class="row">
+         <div class="col-sm-12">
+             <div class="ibox float-e-margins">
+                 <div class="ibox-title">
+                     <h5>列表</h5>
+                 </div>
+                 <div class="ibox-content">
+                     <div class="table-responsive">
+                         <table class="table table-striped">
+                             <thead>
+                             <tr>
+                                 <th>ID</th>
+                                 <th>用户名</th>
+                                 <th>密码</th>
+                             </tr>
+                             </thead>
+                             <tbody>
+                             <tr>
+                             </tr>
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="col-sm-12"><ul id="pagintor"></ul></div>
+     </div>
+     </div>
+     <script src="js/jquery.min.js?v=2.1.4"></script>
+     <script src="js/bootstrap.min.js?v=3.3.6"></script>
+     <script src="js/plugins/peity/jquery.peity.min.js"></script>
+     <script src="js/plugins/iCheck/icheck.min.js"></script>
+     <script src="js/demo/peity-demo.js"></script>
+     <script src="js/bootstrap-paginator.min.js"></script>
+     <script src="js/jquery.validate.min.js"></script>
+     <script src="js/tools.js"></script>
+     <script type="text/javascript">
+         $('#user').validate({
+             errorPlacement: function(error, element) {
+                 error.appendTo(element.parent());
+             },
+             onfocusout:function(element){
+                 $(element).valid();
+             },
+             submitHandler: function (form) {
+                 addToDB($('#user').attr("action"), $('#user').serialize());
+                 pageTools(1,30);
+                 getList(1);
+             }
+         });
+         $(document).ready(function(){
+             pageTools(1,30);
+             getList(1);
+         });
+
+         function getList(pageNo) {
+             $.ajax({
+                 url : "user/getUserList",
+                 type : "post",
+                 data : "pageNo=" + pageNo,
+                 success : function(data) {
+                     if (data.statusCode == "200") {
+                         var str = '';
+                         for (var i = 0; i < data.data.list.length; i++) {
+                             str += '<tr>'
+                                 + '<td>' + data.data.list[i].user_id + '</td>'
+                                 + '<td>' + data.data.list[i].user_name + '</td>'
+                                 + '<td>' + data.data.list[i].user_pass + '</td>'
+                                 + '</tr>';
+                         }
+                         $("table tbody").html(str);
+                     }
+                 },
+                 error : function(data) {
+                     alert(JSON.stringify(data));
+                 }
+             })
+         }
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ss.vv.ss.mapper.IZeroMapper">
+
+	<resultMap id="baseResultMap" type="com.ss.vv.ss.domain.Zero">
+		<id column="a_id" jdbcType="INTEGER" property="a_id" />
+		<result column="a_name" jdbcType="VARCHAR" property="a_name" />
+		<result column="a_pass" jdbcType="VARCHAR" property="a_pass" />
+	</resultMap>
+
+	<sql id="baseColumnList">
+a_id,a_name,a_pass	</sql>
+	<sql id="voColumnList">
+a_id,a_name,a_pass	</sql>
+
+		<insert id="insert" useGeneratedKeys="true" keyProperty="entity.a_id">
+		INSERT INTO ${tableName} (
+		a_name, a_pass
+		) VALUES (
+		#{entity.a_name}, #{entity.a_pass}
+		)	</insert>
+
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select
+		count(a_id)
+		from ${tableName}
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+	</select>
+
+
+	<select id="selectLogin"  parameterType="map" resultType="com.ss.vv.ss.domain.Zero">
+			select * from zero where a_name = #{a_name} and a_pass = #{a_pass}
+		</select>
+	<!-- 这部分为根据传递参数，自动生成SQL -->
+	<select id="getList" parameterType="java.util.Map" resultMap="baseResultMap">
+		select
+		<if test="field == null">
+			<include refid="voColumnList" />
+		</if>
+		<if test="field != null">
+			${field}
+		</if>
+		from ${tableName}
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+		<if test="order != null">
+			order by ${order}
+		</if>
+		<if test="limit != 0">
+			<if test="offset != 0">
+				limit ${offset}, ${limit}
+			</if>
+			<if test="offset == 0">
+				limit ${limit}
+			</if>
+		</if>
+	</select>
+</mapper>

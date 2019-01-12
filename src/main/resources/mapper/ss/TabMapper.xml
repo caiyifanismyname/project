@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ss.vv.ss.mapper.ITabMapper">
+	
+		<resultMap id="baseResultMap" type="com.ss.vv.ss.domain.Tab">
+		<id column="tab_id" jdbcType="INTEGER" property="tab_id" />
+		<result column="tab_name" jdbcType="VARCHAR" property="tab_name" />
+		<result column="tab_phone" jdbcType="VARCHAR" property="tab_phone" />
+		<result column="tab_email" jdbcType="VARCHAR" property="tab_email" />
+		<result column="pig_name" jdbcType="VARCHAR" property="pig_name" />
+		<result column="tab_num" jdbcType="INTEGER" property="tab_num" />
+		<result column="tab_mon" jdbcType="INTEGER" property="tab_mon" />
+	</resultMap>
+
+	<sql id="baseColumnList">
+tab_id,tab_name,tab_phone,tab_email,pig_name,tab_num,tab_mon	</sql>
+	<sql id="voColumnList">
+tab_id,tab_name,tab_phone,tab_email,pig_name,tab_num,tab_mon	</sql>
+
+		<insert id="insert" useGeneratedKeys="true" keyProperty="entity.tab_id">
+		INSERT INTO ${tableName} (
+		tab_name,tab_phone,tab_email,pig_name,tab_num,tab_mon
+		) VALUES (
+		#{entity.tab_name}, #{entity.tab_phone}, #{entity.tab_email}, #{entity.pig_name},#{entity.tab_num},#{entity.tab_mon}
+		)	</insert>
+
+
+		
+		
+		
+		
+		
+		<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select
+		count(tab_id)
+		from ${tableName}
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+	</select>
+
+	<!-- 这部分为根据传递参数，自动生成SQL -->
+	<select id="getList" parameterType="java.util.Map" resultMap="baseResultMap">
+		select
+		<if test="field == null">
+			<include refid="voColumnList" />
+		</if>
+		<if test="field != null">
+			${field}
+		</if>
+		from ${tableName}
+		<where>
+			<foreach collection="condition" index="key" item="value">
+				${value} ${key}
+			</foreach>
+		</where>
+		<if test="order != null">
+			order by ${order}
+		</if>
+		<if test="limit != 0">
+			<if test="offset != 0">
+				limit ${offset}, ${limit}
+			</if>
+			<if test="offset == 0">
+				limit ${limit}
+			</if>
+		</if>
+	</select>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</mapper>

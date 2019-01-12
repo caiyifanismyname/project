@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>关于</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/swipebox.css">
+    <link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Alice' rel='stylesheet' type='text/css'>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easydropdown.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/toudi.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="banner">
+    <div class="header"></div>
+    <div class="banner-info1">
+        <div class="banner-col">
+        </div>
+        <div class="container">
+            <h2>关于</h2>
+        </div>
+    </div>
+</div>
+<!-- header -->
+<!-- about -->
+<div class="about">
+    <div class="container">
+        <div class="about-top">
+            <section class="title-section">
+                <ul class="breadcrumb breadcrumb__t">
+                    <li><a href="index.html">首页</a></li>
+                    <li class="active">关于</li>
+                </ul>
+            </section>
+            <div class="about-desc">
+                <h3><a href="#">简介</a></h3>
+                <p>
+                    我们开发团队创立于2018年，旨在创建集养猪企业，生猪行情，买猪卖猪等于一体的资讯数据库，为买家提供专业的养猪资讯。我们有专门的养猪场，用户可通过我们网站查看想要买的猪类，成功预定猪类后联系我们，约定时间到猪场提猪。</p>
+                <p>
+                    中国是养猪大国，但不是养猪强国。随着中国经济的快速发展，养猪业也在快速发展，而中国养猪业发展的必然趋势就是规模化、集约化、产业化、集团化，也就是说，散养户快速减少，中小猪场逐渐减少，规模化猪场越来越多，这是所有发达国家养猪业所走过的路，也必将是中国养猪业发展的必然趋势。如今国家信息化发展已是势不可挡的趋势，很多行业都依托着网络，养猪业自然也避免不了。我们团队致力于打造全新的、简捷的、便于客户的养猪系统，倡导绿色生态养殖，追逐国家信息化发展，打造养猪天下。</p>
+                <a href="#" title="read more" class="button">了解更多</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 about_left">
+                <ul class="about-list">
+                    <h4 class="m_2">特色</h4>
+                    <li><a href="#">“一站式”服务</a>
+                        <p>宜猪网随时及时更新养猪行业及其相关服务行业的最新动态资讯，用户不出门，不看电视报纸杂志，就可以轻轻松松了解猪市行情。</p></li>
+                    <li><a href="#">形象生动</a>
+                        <p>宜猪网除了提供各种类猪的最新动态，还即时更新养猪市场的最新动态，制作各类相关专题，让用户对于养猪有更科学更积极的认识，并且在生动形象的专题中学到对应的养猪经验。</p></li>
+                    <li><a href="#">种类繁多</a>
+                        <p>我们拥有多种类的猪，客户只管通过宜猪网查看各类猪，应有尽有，各类猪的图片均是实拍，客户不用担心猪与图片不符的情况。</p></li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <h3 class="m_3">猪天下</h3>
+                <ul class="about_right">
+                    <li class="test_img">
+                        <img src="images/pic2.jpg" class="img-responsive"/>
+                    </li>
+                    <li class="test_desc">
+                        <h4><a href="#">我们的口号</a></h4>
+                        <p>绿色养殖，品质一流。持续发展，品质共享。</p>
+                    </li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- about -->
+<!-- footer -->
+<div class="footer"></div>
+<!-- footer -->
+<!--内部js-->
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(".swipebox").swipebox();
+    });
+</script>
+
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+        });
+    });
+</script>
+<script type="application/x-javascript">
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>市场</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="css/map.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Alice' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/swipebox.css">
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easydropdown.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script src="js/toudi.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="banner">
+    <div class="header">
+    </div>
+    <div class="banner-info1">
+        <div class="banner-col">
+        </div>
+
+        <div class="container">
+            <h2>市场</h2>
+        </div>
+    </div>
+</div>
+<!-- header -->
+<div class="map">
+    <img src="images/map.png" width="100%">
+    <div class="map-content">
+        <div>
+            <a href="products.html" data-title="苏白猪" class="kind subai">
+                <img src="images/tubiao.png">
+            </a>
+        </div>
+        <div>
+            <a href="products.html" data-title="皮特兰猪" class="kind pitelan">
+                <img src="images/tubiao.png">
+            </a>
+        </div>
+        <div>
+            <a href="products.html" data-title="汉普夏猪" class="kind hanpuxia">
+                <img src="images/tubiao.png">
+            </a>
+        </div>
+        <div>
+            <a href="products.html" data-title="杜洛克猪" class="kind duluoke">
+                <img src="images/tubiao.png">
+            </a>
+        </div>
+        <div>
+            <a href="products.html" data-title="长白猪" class="kind changbai">
+                <img src="images/tubiao.png">
+            </a>
+        </div>
+        <div>
+            <a href="products.html" data-title="大白猪" class="kind dabai">
+                <img src="images/tubiao.png">
+            </a>
+        </div>
+        <div>
+            <a href="products.html" data-title="太湖猪" class="kind taihu">
+                <img src="images/tubiao.png">
+            </a>
+        </div>
+        <div>
+            <a href="products.html" data-title="八眉猪" class="kind bamei">
+                <img src="images/tubiao.png">
+            </a>
+        </div>
+    </div>
+    <div class="tip">
+        <em></em>
+        <span></span>
+    </div>
+</div>
+<!-- footer -->
+<div class="footer"></div>
+<script>
+    $(function () {
+        $(".map .map-content .kind").hover(function () {
+            var title = $(this).attr("data-title");
+            $(".tip em").text(title);
+            // alert(title);
+            var posl = $(this).offset().left;
+            var post = $(this).offset().top;
+            var s = post - 30;
+            $(".tip").css({"left": posl + "px", "top": s + "px", "opacity": 1});
+        });
+    })
+</script>
+<script type="application/x-javascript">
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(".swipebox").swipebox();
+    });
+</script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+        });
+    });
+</script>
+
+<!-- footer -->
+</body>
+</html>

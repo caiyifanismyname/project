@@ -1,0 +1,109 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>联系我们</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/swipebox.css">
+    <link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Alice' rel='stylesheet' type='text/css'>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easydropdown.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script src="js/toudi.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="banner">
+    <div class="header"></div>
+    <div class="banner-info1">
+        <div class="banner-col"></div>
+        <div class="container">
+            <h2>联系我们</h2>
+        </div>
+    </div>
+</div>
+<!-- header -->
+<!-- contact -->
+<div class="contact">
+    <div class="container">
+        <section class="title-section">
+
+            <ul class="breadcrumb breadcrumb__t">
+                <li><a href="index.html">首页</a></li>
+                <li class="active">联系我们</li>
+            </ul>
+        </section>
+        <div class="row contact_top">
+            <div class="col-md-8 contact_left">
+                <p>&nbsp;非常感谢您对浏览我们的网页，如果您在使用过程中遇到问题，请您留言联系我们，我们会在第一时间给予您答复！ <span>email@bislite.com</span></p>
+                <form method="post" action="contact-post.html">
+                    <div class="form_details">
+                        <input style="border: 1px solid grey" type="text" class="text" value="名字"
+                               onfocus="this.value = '';"
+                               onblur="if (this.value == '') {this.value = '名字';}">
+                        <input style="border: 1px solid grey" type="text" class="text" value="电子邮件地址"
+                               onfocus="this.value = '';"
+                               onblur="if (this.value == '') {this.value = '电子邮件地址';}">
+                        <input style="border: 1px solid grey" type="text" class="text" value="话题"
+                               onfocus="this.value = '';"
+                               onblur="if (this.value == '') {this.value = '话题';}">
+                        <textarea style="border: 1px solid grey" value="Message" onfocus="this.value = '';"
+                                  onblur="if (this.value == '') {this.value = '留言';}">留言</textarea>
+                        <input name="submit" type="submit" id="submit" value="提交">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 map-right">
+                <div class="map_background">
+                    <h6>我们与你相伴</h6>
+
+                    <div class="map">
+                        <a href="https://map.baidu.com/">
+                            <img src="images/add.PNG" alt="找不到这张图" width="308px" height="200px">
+                        </a>
+                    </div>
+                </div>
+                <div class="company_ad">
+                    <h3>办公地址:</h3>
+                    <address>
+                        <p>中国</p>
+                        <p>广西柳州市广西科技大学启迪数字学院养猪场</p>
+                        <p>电话:0776-5208888</p>
+                        <p>传真:110-120-119</p>
+
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- contact -->
+<!-- footer -->
+<div class="footer"></div>
+<!-- footer -->
+
+<script type="application/x-javascript"> addEventListener("load", function () {
+    setTimeout(hideURLbar, 0);
+}, false);
+function hideURLbar() {
+    window.scrollTo(0, 1);
+} </script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+        });
+    });
+</script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(".swipebox").swipebox();
+    });
+</script>
+
+</body>
+</html>

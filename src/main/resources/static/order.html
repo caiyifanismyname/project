@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>订单填写</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="css/style2.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/swipebox.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easydropdown.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script src="js/toudi.js"></script>
+    <!--<script src="js/tools.js"></script>-->
+    <script type="text/javascript" src="js/cookie.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="banner">
+    <div class="header"></div>
+    <div class="banner-info1">
+        <div class="banner-col"></div>
+        <div class="container">
+            <h2 style="text-align: center;">购买订单</h2>
+        </div>
+    </div>
+</div>
+<!-- header -->
+<div>
+
+    <form id="myForm" role="form" action="/tab/addOrEditTab" method="post">
+        <br>
+        <div class="wow fadeInLeft" data-wow-delay="0.4s">
+            <span>买家姓名<label>*</label></span>
+            <input type="text" id="inputText" class="form-control" placeholder="name" name="tab_name"
+                   >
+        </div>
+        <br>
+        <div class="wow fadeInRight" data-wow-delay="0.4s">
+            <span>联系电话<label>*</label></span>
+            <input type="tel" id="inputPhone" class="form-control" placeholder="Phonenumber" name="tab_phone"
+                    onblur="LXDHonblus()">
+        </div>
+        <br>
+        <div class="wow fadeInRight" data-wow-delay="0.4s">
+            <span>Email<label>*</label></span>
+            <input type="email" id="inputEmail" class="form-control" placeholder="email" name="tab_email"
+                   >
+        </div>
+
+        <script type="text/javascript">
+            var output1 =getCookie("username");
+            var output2 = getCookie("phonenumber");
+            var output3 = getCookie("email");
+            document.getElementById('inputText').value=output1;
+            document.getElementById('inputPhone').value=output2;
+            document.getElementById('inputEmail').value=output3;
+        </script>
+        <br>
+        <div class="info">
+            <table class="order1" border="1px" width="100%" id="tab" onclick="check()">
+                <thead>
+                <tr>
+                    <th class="tip0">购猪品种</th>
+                    <th class="tip1">单价（元/头）</th>
+                    <th class="tip2">数量</th>
+                    <th class="tip3">价格</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tip0">大白猪</td>
+                    <td class="tip1" id="p1">9000</td>
+                    <td class="tip2"><input type="number" min="0" id="num1" name="num1"
+                                            onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+                                            onblur="show(this.value)"></td>
+                    <td class="tip3" id="pri1">0</td>
+                </tr>
+                <tr>
+                    <td class="tip0">长白猪</td>
+                    <td class="tip1">8500</td>
+                    <td class="tip2"><input type="number" min="0" id="num2" name="num2"
+                                            onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+                                            onblur="show(this.value)"></td>
+                    <td class="tip3" id="pri2">0</td>
+                </tr>
+                <tr>
+                    <td class="tip0">杜洛克猪</td>
+                    <td class="tip1">7000</td>
+                    <td class="tip2"><input type="number" min="0" id="num3" name="num3"
+                                            onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+                                            onblur="show(this.value)"></td>
+                    <td class="tip3" id="pri3">0</td>
+                </tr>
+                <tr>
+                    <td class="tip0">八眉猪</td>
+                    <td class="tip1">9700</td>
+                    <td class="tip2"><input type="number" min="0" id="num4" name="num4"
+                                            onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+                                            onblur="show(this.value)"></td>
+                    <td class="tip3" id="pri4">0</td>
+                </tr>
+                <tr>
+                    <td class="tip0">汉普夏猪</td>
+                    <td class="tip1">6000</td>
+                    <td class="tip2"><input type="number"  min="0" id="num5" name="num5"
+                                            onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+                                            onblur="show(this.value)"></td>
+                    <td class="tip3" id="pri5">0</td>
+                </tr>
+                <tr>
+                    <td class="tip0">皮特兰猪</td>
+                    <td class="tip1">8000</td>
+                    <td class="tip2"><input type="number" min="0" id="num6" name="num6"
+                                            onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+                                            onblur="show(this.value)"></td>
+                    <td class="tip3" id="pri6">0</td>
+                </tr>
+                <tr>
+                    <td class="tip0">苏白猪</td>
+                    <td class="tip1">6000</td>
+                    <td class="tip2"><input type="number" min="0" id="num7" name="num7"
+                                            onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+                                            onblur="show(this.value)"></td>
+                    <td class="tip3" id="pri7">0</td>
+                </tr>
+                <tr>
+                    <td class="tip0">太湖猪</td>
+                    <td class="tip1">10000</td>
+                    <td class="tip2"><input type="number" min = "0" id="num8" name="num8"
+                                            onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+                                            onblur="show(this.value)"></td>
+                    <td class="tip3" id="pri8">0</td>
+                </tr>
+                </tbody>
+                <tr>
+                    <th class="tip0 all"><p>总价格</p></th>
+                    <td colspan="2" id="price"></td>
+                    <td>
+                        <button class="p" type="submit">确定购买</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+
+<!-- footer -->
+<div class="footer"></div>
+<script>
+    function show() {
+        var num1 = $("#num1").val();
+        if(num1.value < 0){
+            parent.alert('登陆不成功');
+        }
+        var price1 = num1 * 9000;
+        $("#pri1").text(price1);
+        var num2 = $("#num2").val();
+        var price2 = num2 * 8500;
+        $("#pri2").text(price2);
+        var num3 = $("#num3").val();
+        var price3 = num3 * 7000;
+        $("#pri3").text(price3);
+        var num4 = $("#num4").val();
+        var price4 = num4 * 9700;
+        $("#pri4").text(price4);
+        var num5 = $("#num5").val();
+        var price5 = num5 * 6000;
+        $("#pri5").text(price5);
+        var num6 = $("#num6").val();
+        var price6 = num6 * 8000;
+        $("#pri6").text(price6);
+        var num7 = $("#num7").val();
+        var price7 = num7 * 6000;
+        $("#pri7").text(price7);
+        var num8 = $("#num8").val();
+        var price8 = num8 * 10000;
+        $("#pri8").text(price8);
+        var price = price1 + price2 + price3 + price4 + price5 + price6 + price7 + price8;
+        $("#price").text(price + "元");
+    }
+
+    function LXDHonblus() {
+        var phone = document.getElementById("inputPhone");
+        var re = /^1\d{10}$/;
+        if (phone.value == "") {
+            document.getElementById('LXDHerror').innerText = "请输入联系电话";
+        } else if (!re.test(phone)) {
+            document.getElementById('LXDHerror').innerText = "电话格式输入错误";
+        } else {
+            document.getElementById('LXDHerror').innerText = "";
+        }
+    }
+    function LXDHonfocu() {
+        document.getElementById('LXDHerror').innerText = "";
+    }
+</script>
+
+<script type="application/x-javascript">
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(".swipebox").swipebox();
+    });
+</script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+        });
+    });
+
+</script>
+
+<!-- footer -->
+</body>
+</html>
